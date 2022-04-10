@@ -1,0 +1,25 @@
+version: '2'
+services:
+    eureka:
+        container_name: discovery-service-container
+        build:
+            context: discovery-service
+            dockerfile: Dockerfile
+        image: health-project/discovery-service
+        ports:
+            - "8761:8761"
+        networks:
+            - "microservicenetwork"
+    user:
+        container_name: gateway-service-container
+        build:
+            context: gateway-service
+            dockerfile: Dockerfile
+        image: health-project/gateway-service
+        ports:
+            - "8080:8080"
+        networks:
+            - "microservicenetwork"
+networks:
+    microservicenetwork:
+        driver: bridge
