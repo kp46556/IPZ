@@ -11,7 +11,7 @@ services:
             MYSQL_ROOT_PASSWORD: asdf1235
         networks:
             - "microservicenetwork"
-    eureka:
+    discovery:
         container_name: discovery-service-container
         build:
             context: discovery-service
@@ -24,7 +24,7 @@ services:
     gateway:
         container_name: gateway-service-container
         depends_on:
-            - eureka
+            - discovery
         build:
             context: gateway-service
             dockerfile: Dockerfile
@@ -33,12 +33,12 @@ services:
             - "8080:8080"
         networks:
             - "microservicenetwork"
-    health-service:
+    health:
         container_name: health-service-container
         depends_on:
-            - eureka
-            - gateway
             - db
+            - discovery
+            - gateway
         build:
             context: health-service
             dockerfile: Dockerfile
