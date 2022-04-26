@@ -23,10 +23,14 @@ public class HealthServiceApplication {
 	@Bean
 	public CommandLineRunner demo(HospitalService hospitalService) {
 		return (args) -> {
-			hospitalService.addHospital(new Hospital("109 Military Hospital SPZOZ", "Księdza Piotra Skargi 9/11, 71-422 Szczecin", "Military"));
-			hospitalService.addHospital(new Hospital("Samodzielny Publiczny Szpital Kliniczny Nr 1 Pomorskiego Uniwersytetu Medycznego im. prof. Tadeusza Sokołowskiego", "Unii Lubelskiej 1, 71-252 Szczecin", "Public"));
-			hospitalService.addHospital(new Hospital("SSP ZOZ MSWiA w Szczecinie", "Jagiellońska 44, 70-382 Szczecin", "Public"));
-			hospitalService.addHospital(new Hospital("Szpital Miejski Im. Św. Karola Boromeusza", "aleja Wyzwolenia 52, 71-506 Szczecin", "Rehab"));
+//			hospitalService.addHospital(new Hospital("109 Military Hospital SPZOZ", "Ksiedza Piotra Skargi 9/11, 71-422 Szczecin", "Military"));
+//			hospitalService.addHospital(new Hospital("Samodzielny Publiczny Szpital Kliniczny Nr 1 Pomorskiego Uniwersytetu Medycznego im. prof. Tadeusza Sokołowskiego", "Unii Lubelskiej 1, 71-252 Szczecin", "Public"));
+//			hospitalService.addHospital(new Hospital("SSP ZOZ MSWiA w Szczecinie", "Jagiellońska 44, 70-382 Szczecin", "Public"));
+//			hospitalService.addHospital(new Hospital("Szpital Miejski Im. Sw. Karola Boromeusza", "aleja Wyzwolenia 52, 71-506 Szczecin", "Rehab"));
+			hospitalService.addHospital(new Hospital("name1", "addr1", "Military"));
+			hospitalService.addHospital(new Hospital("name2", "addr2", "Public"));
+			hospitalService.addHospital(new Hospital("name3", "addr3", "Public"));
+			hospitalService.addHospital(new Hospital("name4", "addr4", "Rehab"));
 		};
 	}
 }

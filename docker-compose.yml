@@ -1,5 +1,16 @@
-version: '2'
+version: '3'
 services:
+    db:
+        container_name: mysql-container
+        image: mysql:latest
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: health-service
+            MYSQL_ROOT_PASSWORD: asdf1235
+        networks:
+            - "microservicenetwork"
     eureka:
         container_name: discovery-service-container
         build:
@@ -10,8 +21,10 @@ services:
             - "8761:8761"
         networks:
             - "microservicenetwork"
-    user:
+    gateway:
         container_name: gateway-service-container
+        depends_on:
+            - eureka
         build:
             context: gateway-service
             dockerfile: Dockerfile
@@ -20,6 +33,21 @@ services:
             - "8080:8080"
         networks:
             - "microservicenetwork"
+    health-service:
+        container_name: health-service-container
+        depends_on:
+            - eureka
+            - gateway
+            - db
+        build:
+            context: health-service
+            dockerfile: Dockerfile
+        image: health-project/health-service
+        ports:
+            - "8081:8081"
+        networks:
+            - "microservicenetwork"
+  
 networks:
     microservicenetwork:
         driver: bridge
