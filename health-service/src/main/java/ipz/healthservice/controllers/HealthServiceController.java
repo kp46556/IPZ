@@ -13,17 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/health-service")
 public class HealthServiceController {
-    @Autowired
-    private HospitalService hospitalService;
-
     @GetMapping("")
-    public String asdf() {
-        return "asdf";
+    public String healthService() {
+        return "health-service works";
     }
-
-    @GetMapping("hospitals")
-    public List<Hospital> allHospitals() {
-        return hospitalService.getAllHospitals();
-    }
-
 }

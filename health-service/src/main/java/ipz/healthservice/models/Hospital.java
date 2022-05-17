@@ -1,15 +1,13 @@
 package ipz.healthservice.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    @Column(unique = true)
     String name;
     String address;
     String type;
@@ -21,6 +19,14 @@ public class Hospital {
         this.name = name;
         this.address = address;
         this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
