@@ -10,16 +10,17 @@ public class Doctor {
 
     String name;
     String lastName;
-
+    String spec;
     @ManyToOne
     DoctorsOffice doctorsOffice;
 
     public Doctor() {
     }
 
-    public Doctor(String name, String lastName, DoctorsOffice doctorsOffice) {
+    public Doctor(String name, String lastName, String spec, DoctorsOffice doctorsOffice) {
         this.name = name;
         this.lastName = lastName;
+        this.spec=spec;
         this.doctorsOffice = doctorsOffice;
     }
 
@@ -39,6 +40,9 @@ public class Doctor {
         this.lastName = lastName;
     }
 
+    public String getSpec() { return spec; }
+
+    public void setSpec(String spec) { this.spec = spec; }
     public DoctorsOffice getDoctorsOffice() {
         return doctorsOffice;
     }

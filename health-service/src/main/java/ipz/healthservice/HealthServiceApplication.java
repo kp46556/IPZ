@@ -27,10 +27,9 @@ public class HealthServiceApplication {
 //			hospitalService.addHospital(new Hospital("Samodzielny Publiczny Szpital Kliniczny Nr 1 Pomorskiego Uniwersytetu Medycznego im. prof. Tadeusza Sokołowskiego", "Unii Lubelskiej 1, 71-252 Szczecin", "Public"));
 //			hospitalService.addHospital(new Hospital("SSP ZOZ MSWiA w Szczecinie", "Jagiellońska 44, 70-382 Szczecin", "Public"));
 //			hospitalService.addHospital(new Hospital("Szpital Miejski Im. Sw. Karola Boromeusza", "aleja Wyzwolenia 52, 71-506 Szczecin", "Rehab"));
-			hospitalService.addHospital(new Hospital("name1", "addr1", "Military"));
-			hospitalService.addHospital(new Hospital("name2", "addr2", "Public"));
-			hospitalService.addHospital(new Hospital("name3", "addr3", "Public"));
-			hospitalService.addHospital(new Hospital("name4", "addr4", "Rehab"));
+			hospitalService.addHospital(new Hospital("Centrum Onkologii Bydgoszcz im. prof. Franciszka Lukaszczyka","ul. Romanowskiej", "2", "Bydgoszcz", "85-796", "Public"));
+			hospitalService.addHospital(new Hospital("SP ZOZ Szpital Uniwersytecki w Krakowie", "ul. Kopernika", "36", "Krakow", "31-501", "Rehab"));
+			hospitalService.addHospital(new Hospital("Szpitale Pomorskie Sp. z o.o. Szpital Morski im. PCK", "ul. Powstania Styczniowego", "1", "Gdynia", "81-519", "Military"));
 		};
 	}
 }

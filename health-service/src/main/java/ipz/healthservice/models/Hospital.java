@@ -9,15 +9,21 @@ public class Hospital {
     Long id;
     @Column(unique = true)
     String name;
-    String address;
+    String street;
+    String number;
+    String city;
+    String postCode;
     String type;
 
     public Hospital() {
     }
 
-    public Hospital(String name, String address, String type) {
+    public Hospital(String name, String street, String number, String city, String postCode, String type) {
         this.name = name;
-        this.address = address;
+        this.street = street;
+        this.number=number;
+        this.city=city;
+        this.postCode=postCode;
         this.type = type;
     }
 
@@ -37,13 +43,25 @@ public class Hospital {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
     }
+
+    public String getNumber() { return number; }
+
+    public void setNumber(String number) { this.number = number; }
+
+    public String getCity() { return city; }
+
+    public void setCity(String city) { this.city = city; }
+
+    public String getPostCode() { return postCode; }
+
+    public void setPostCode(String postCode) { this.postCode = postCode; }
 
     public String getType() {
         return type;

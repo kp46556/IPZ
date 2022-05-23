@@ -23,7 +23,10 @@ public class HospitalService {
         return iHospitalRepository.findById(id)
                 .map(hospital -> {
                     hospital.setName(newHospital.getName());
-                    hospital.setAddress(newHospital.getAddress());
+                    hospital.setStreet(newHospital.getStreet());
+                    hospital.setNumber(newHospital.getNumber());
+                    hospital.setCity(newHospital.getCity());
+                    hospital.setPostCode(newHospital.getPostCode());
                     hospital.setType(newHospital.getType());
                     return iHospitalRepository.save(hospital);
                 })
