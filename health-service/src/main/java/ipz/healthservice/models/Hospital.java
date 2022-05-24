@@ -11,14 +11,18 @@ public class Hospital {
     String name;
     String address;
     String type;
+    Double lng;
+    Double lat;
 
     public Hospital() {
     }
 
-    public Hospital(String name, String address, String type) {
+    public Hospital(String name, String address, String type, Double lng, Double lat) {
         this.name = name;
         this.address = address;
         this.type = type;
+        this.lng = lng;
+        this.lat = lat;
     }
 
     public Long getId() {
@@ -51,5 +55,21 @@ public class Hospital {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 }

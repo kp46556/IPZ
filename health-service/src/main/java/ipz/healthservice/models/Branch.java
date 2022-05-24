@@ -9,10 +9,15 @@ public class Branch {
     Long id;
     String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Hospital hospital;
 
     public Branch() {
+    }
+
+    public Branch(String name, Hospital hospital) {
+        this.name = name;
+        this.hospital = hospital;
     }
 
     public String getName() {

@@ -1,31 +1,28 @@
 package ipz.healthservice.models;
 
-import ipz.healthservice.services.BranchService;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Doctor {
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    String name;
-    String lastName;
-    String oktaUID;
-
-    @ManyToOne
-    Branch branch;
-
-    public Doctor() {
+    public Patient() {
     }
 
-    public Doctor(String name, String lastName, String oktaUID, Branch branch) {
+    public Patient(String name, String lastName, String oktaUID) {
         this.name = name;
         this.lastName = lastName;
         this.oktaUID = oktaUID;
-        this.branch = branch;
     }
+
+    String name;
+    String lastName;
+    String oktaUID;
 
     public String getName() {
         return name;
@@ -49,14 +46,6 @@ public class Doctor {
 
     public void setOktaUID(String oktaUID) {
         this.oktaUID = oktaUID;
-    }
-
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
     }
 
     public Long getId() {
