@@ -5,6 +5,8 @@ import ipz.healthservice.repositories.IDoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DoctorService {
     IDoctorRepository iDoctorRepository;
@@ -16,5 +18,9 @@ public class DoctorService {
 
     public Doctor addDoctor(Doctor doctor) {
         return iDoctorRepository.save(doctor);
+    }
+
+    public List<Doctor> findAllByBranchId(Long id) {
+        return iDoctorRepository.findAllByBranchId(id);
     }
 }

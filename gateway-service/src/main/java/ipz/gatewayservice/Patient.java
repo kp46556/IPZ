@@ -1,4 +1,4 @@
-package ipz.healthservice.models;
+package ipz.gatewayservice;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Visit {
     @EmbeddedId
-    private VisitKey id;
+    private VisitKey visitKey;
 
     @ManyToOne
     @MapsId("doctorId")
@@ -25,18 +25,18 @@ public class Visit {
     }
 
     public Visit(Patient patient, Doctor doctor, Date date) {
-        this.id = new VisitKey(patient.getId(), doctor.getId());
+        this.visitKey = new VisitKey(patient.getId(), doctor.getId());
         this.doctor = doctor;
         this.patient = patient;
         this.date = date;
     }
 
     public VisitKey getId() {
-        return id;
+        return visitKey;
     }
 
     public void setId(VisitKey id) {
-        this.id = id;
+        this.visitKey = id;
     }
 
     public Doctor getDoctor() {

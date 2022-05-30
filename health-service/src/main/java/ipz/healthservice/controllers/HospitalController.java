@@ -15,6 +15,11 @@ public class HospitalController {
     @Autowired
     private HospitalService hospitalService;
 
+    @GetMapping("")
+    public String works() {
+        return "hospital works";
+    }
+
     @GetMapping("getAll")
     public List<Hospital> allHospitals() {
         return hospitalService.getAllHospitals();

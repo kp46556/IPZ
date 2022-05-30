@@ -33,21 +33,33 @@ public class HealthServiceApplication {
 			DoctorService doctorService,
 			VisitService visitService) {
 		return (args) -> {
-			Hospital milHospital = new Hospital("name1", "addr1", "Military", 14.223, 32.333);
+			Hospital blankHospital = new Hospital(1L, "BLANK", "BLANK", "BLANK", 0.0, 0.0);
+			Hospital milHospital = new Hospital("109 Military Hospital SPZOZ", "Ks.Piotra Skargi 9/11, 71-422 Szczecin", "Military", 14.223, 32.333);
 			Patient patient1 = new Patient("Patient", "Patientski", "00u55mrhpeBbCP3aa5d7");
-			Branch milHospitalBranch1 = new Branch("Kardiologia", milHospital);
-			Branch milHospitalBranch2 = new Branch("Onkologia", milHospital);
+			Patient patient2 = new Patient("Patient2", "Patientski2", "00u57yxtq7FMVxTUK5d7");
+			Branch blankBranch = new Branch(1L, "BLANK", blankHospital);
+			Branch milHospitalBranch1 = new Branch("Cardiology", milHospital);
+			Branch milHospitalBranch2 = new Branch("Oncology", milHospital);
 			Doctor doctor1 = new Doctor("Doctor", "Doctorski", "00u55mt60r3EYoghq5d7", milHospitalBranch1);
+			Doctor doctor2 = new Doctor("Doctor2", "Doctorski2", "00u57yygo2wC4YwcF5d7", milHospitalBranch1);
 			Visit visit = new Visit(patient1, doctor1, new Date());
+			Visit visit2 = new Visit(patient2, doctor1, new Date());
+			Visit visit3 = new Visit(patient2, doctor2, new Date());
+			hospitalService.addHospital(blankHospital);
 			hospitalService.addHospital(milHospital);
-			hospitalService.addHospital(new Hospital("name2", "addr2", "Public", 33.441, 55.551));
-			hospitalService.addHospital(new Hospital("name3", "addr3", "Public", 13.4445, 14.44));
-			hospitalService.addHospital(new Hospital("name4", "addr4", "Rehab", 10.44, 17.11));
+			hospitalService.addHospital(new Hospital("Independent Public Regional Hospital", "Arkonska 4, 71-455 Szczecin", "Public", 33.441, 55.551));
+			hospitalService.addHospital(new Hospital("Rehabilitation Hospital of St. Charles Borromeo", "aleja Wyzwolenia 52, 71-899 Szczecin", "Rehab", 13.4445, 14.44));
+			hospitalService.addHospital(new Hospital("Independent Public Clinical Hospital No. 2", "al. Powstancow Wielkopolskich 72, 70-111 Szczecin", "Rehab", 10.44, 17.11));
+			branchService.addBranch(blankBranch);
 			branchService.addBranch(milHospitalBranch1);
 			branchService.addBranch(milHospitalBranch2);
 			doctorService.addDoctor(doctor1);
+			doctorService.addDoctor(doctor2);
 			patientService.addPatient(patient1);
+			patientService.addPatient(patient2);
 			visitService.addVisit(visit);
+			visitService.addVisit(visit2);
+			visitService.addVisit(visit3);
 		};
 	}
 }

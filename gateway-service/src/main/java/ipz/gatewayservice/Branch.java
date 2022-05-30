@@ -1,4 +1,4 @@
-package ipz.healthservice.models;
+package ipz.gatewayservice;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ public class Branch {
     Long id;
     String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     Hospital hospital;
 
     public Branch() {
@@ -20,10 +20,12 @@ public class Branch {
         this.hospital = hospital;
     }
 
-    public Branch(Long id, String name, Hospital hospital) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
-        this.name = name;
-        this.hospital = hospital;
     }
 
     public String getName() {
@@ -40,5 +42,14 @@ public class Branch {
 
     public void setHospital(Hospital hospital) {
         this.hospital = hospital;
+    }
+
+    @Override
+    public String toString() {
+        return "Branch{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", hospital=" + hospital.toString() +
+                '}';
     }
 }

@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Doctor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     String name;
@@ -25,6 +25,10 @@ public class Doctor {
         this.lastName = lastName;
         this.oktaUID = oktaUID;
         this.branch = branch;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

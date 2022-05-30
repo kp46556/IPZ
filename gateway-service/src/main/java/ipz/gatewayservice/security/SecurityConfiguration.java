@@ -1,5 +1,8 @@
-package ipz.gatewayservice;
+package ipz.gatewayservice.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -14,6 +17,8 @@ import java.util.List;
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 public class SecurityConfiguration {
+    @Autowired
+    WebFilterChainServerAuthenticationSuccessHandler handler;
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
@@ -23,6 +28,7 @@ public class SecurityConfiguration {
                 .anyExchange().authenticated()
                 .and()
                 .oauth2Login()
+//                .authenticationSuccessHandler(handler)
                 .and()
                 .oauth2ResourceServer()
                 .jwt();

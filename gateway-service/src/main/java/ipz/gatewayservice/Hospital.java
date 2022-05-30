@@ -1,4 +1,4 @@
-package ipz.healthservice.models;
+package ipz.gatewayservice;
 
 import javax.persistence.*;
 
@@ -18,15 +18,6 @@ public class Hospital {
     }
 
     public Hospital(String name, String address, String type, Double lng, Double lat) {
-        this.name = name;
-        this.address = address;
-        this.type = type;
-        this.lng = lng;
-        this.lat = lat;
-    }
-
-    public Hospital(Long id, String name, String address, String type, Double lng, Double lat) {
-        this.id = id;
         this.name = name;
         this.address = address;
         this.type = type;
@@ -80,5 +71,17 @@ public class Hospital {
 
     public void setLat(Double lat) {
         this.lat = lat;
+    }
+
+    @Override
+    public String toString() {
+        return "Hospital{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", type='" + type + '\'' +
+                ", lng=" + lng +
+                ", lat=" + lat +
+                '}';
     }
 }
