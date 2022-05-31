@@ -20,7 +20,7 @@ public class HospitalController {
         return "hospital works";
     }
 
-    @GetMapping("getAll")
+    @GetMapping("findAll")
     public List<Hospital> allHospitals() {
         return hospitalService.getAllHospitals();
     }

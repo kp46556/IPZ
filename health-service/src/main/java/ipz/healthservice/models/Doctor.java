@@ -17,14 +17,18 @@ public class Doctor {
     @ManyToOne
     Branch branch;
 
+    @ManyToOne
+    Office office;
+
     public Doctor() {
     }
 
-    public Doctor(String name, String lastName, String oktaUID, Branch branch) {
+    public Doctor(String name, String lastName, String oktaUID, Branch branch, Office office) {
         this.name = name;
         this.lastName = lastName;
         this.oktaUID = oktaUID;
         this.branch = branch;
+        this.office = office;
     }
 
     public void setId(Long id) {
@@ -65,5 +69,13 @@ public class Doctor {
 
     public Long getId() {
         return id;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
     }
 }

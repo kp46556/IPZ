@@ -21,7 +21,6 @@ public class Visit {
     Patient patient;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     Date date;
 
     public Visit() {

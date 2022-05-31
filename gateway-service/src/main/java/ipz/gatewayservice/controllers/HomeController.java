@@ -1,26 +1,27 @@
 package ipz.gatewayservice.controllers;
 
 
-import ipz.gatewayservice.*;
+import ipz.gatewayservice.models.Doctor;
+import ipz.gatewayservice.models.Patient;
+import ipz.gatewayservice.repositories.IBranchRepository;
+import ipz.gatewayservice.repositories.IDoctorRepository;
+import ipz.gatewayservice.repositories.IOfficeRepository;
+import ipz.gatewayservice.repositories.IPatientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 @RestController
 public class HomeController {
@@ -32,6 +33,8 @@ public class HomeController {
     IPatientRepository iPatientRepository;
     @Autowired
     IBranchRepository iBranchRepository;
+    @Autowired
+    IOfficeRepository iOfficeRepository;
 //    @GetMapping("jwt")
 //    public OAuth2AccessToken jwt(OAuth2AuthenticationToken authentication) {
 //        OAuth2AuthorizedClient client =
@@ -90,7 +93,7 @@ public class HomeController {
 //        return attributes;
 //    }
 
-    @RequestMapping(value = "whoami")
+    @GetMapping("whoami")
     @ResponseBody
     public Map<String, Object> whoami(@AuthenticationPrincipal Jwt jwt) {
         Map<String, Object> map = jwt.getClaims();
@@ -134,7 +137,8 @@ public class HomeController {
                         (String) attributes.get("given_name"),
                         (String) attributes.get("family_name"),
                         (String) attributes.get("sub"),
-                        iBranchRepository.getById(1L)
+                        iBranchRepository.findById(1L).get(),
+                        iOfficeRepository.findById(1L).get()
                         )
                 );
             }

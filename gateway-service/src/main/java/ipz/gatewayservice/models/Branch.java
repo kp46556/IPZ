@@ -1,4 +1,4 @@
-package ipz.gatewayservice;
+package ipz.gatewayservice.models;
 
 import javax.persistence.*;
 

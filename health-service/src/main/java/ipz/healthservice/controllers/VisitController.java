@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/health-service/visits")
+@RequestMapping("/api/health-service/visit")
 public class VisitController {
     @Autowired
     private VisitService visitService;
 
     @GetMapping("")
     public String works() {
-        return "visits works";
+        return "visit works";
     }
 
     @GetMapping("getAllByVisitKey/{patientId}/{doctorId}")

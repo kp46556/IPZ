@@ -17,7 +17,7 @@ public class BranchController {
     @Autowired
     BranchService branchService;
 
-    @GetMapping("findAllByHospital_Id/{id}")
+    @GetMapping("findAllByHospitalId/{id}")
     public List<Branch> findAllByHospital_Id(@PathVariable Long id) {
         return branchService.findAllByHospital_Id(id);
     }
