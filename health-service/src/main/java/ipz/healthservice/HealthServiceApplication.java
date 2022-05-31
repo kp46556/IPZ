@@ -60,6 +60,7 @@ public class HealthServiceApplication {
 			visitService.addVisit(visit);
 			visitService.addVisit(visit2);
 			visitService.addVisit(visit3);
+//			visitService.addVisit2(1L, 2L, new Date());
 		};
 	}
 }

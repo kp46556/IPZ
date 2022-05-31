@@ -1,6 +1,7 @@
 package ipz.healthservice.controllers;
 
 import ipz.healthservice.models.Visit;
+import ipz.healthservice.models.VisitJsonPostDataModel;
 import ipz.healthservice.models.VisitKey;
 import ipz.healthservice.repositories.IVisitRepository;
 import ipz.healthservice.services.HospitalService;
@@ -42,10 +43,17 @@ public class VisitController {
         return visitService.findByVisitKeyDoctorId(id);
     }
 
-    @PostMapping("addVisit")
-    public ResponseEntity addVisit(@RequestBody Visit visit)
+//    @PostMapping("addVisitByWholeBody")
+//    public ResponseEntity addVisitByWholeBody(@RequestBody Visit visit)
+//    {
+//        visitService.addVisit(visit);
+//        return new ResponseEntity(HttpStatus.CREATED);
+//    }
+
+    @PostMapping("addVisitByIds")
+    public Visit addVisit(@RequestBody VisitJsonPostDataModel visitJsonPostDataModel)
     {
-        visitService.addVisit(visit);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return visitService.addVisitByIds(visitJsonPostDataModel.getPatientId(), visitJsonPostDataModel.getDoctorId(), visitJsonPostDataModel.getDate());
+//        return new ResponseEntity(HttpStatus.CREATED);
     }
 }
