@@ -34,43 +34,125 @@ public class HealthServiceApplication {
 			VisitService visitService,
 			OfficeService officeService) {
 		return (args) -> {
-			Hospital blankHospital = new Hospital(1L, "BLANK", "BLANK", "BLANK", 0.0, 0.0);
-			Hospital milHospital = new Hospital("109 Military Hospital SPZOZ", "Ks.Piotra Skargi 9/11, 71-422 Szczecin", "Military", 14.223, 32.333);
+			Hospital blankHospital = new Hospital(1L, "Centrum Onkologii Bydgoszcz im. prof. Franciszka Lukaszczyka","ul. Romanowskiej", "2", "Bydgoszcz", "85-796", "Public", 0.0, 0.0);
+			Hospital milHospital = new Hospital("109 Military Hospital SPZOZ", "Ks.Piotra Skargi", "9/11", "Szczecin", "71-422", "Military", 14.223, 32.333);
+			Hospital hos1=new Hospital("Centrum Onkologii Bydgoszcz im. prof. Franciszka Lukaszczyka","ul. Romanowskiej", "2", "Bydgoszcz", "85-796", "Public", 33.441, 55.551);
+			Hospital hos2=new Hospital("SP ZOZ Szpital Uniwersytecki w Krakowie", "ul. Kopernika", "36", "Krakow", "31-501", "Rehab", 13.4445, 14.44);
+			Hospital hos3=new Hospital("Szpitale Pomorskie Sp. z o.o. Szpital Morski im. PCK", "ul. Powstania Styczniowego", "1", "Gdynia", "81-519", "Military", 10.44, 17.11);
+			Hospital hos4=new Hospital("Wojewódzki Szpital Specjalistyczny im. Janusza Korczaka","ul. Hubalczyków","1","Słupsk","76-200", "Public",33.441, 55.551);
+			Hospital hos5=new Hospital("Wojewódzki Szpital Specjalistyczny","ul. Terebelska", "57/65","Biała Podlaska","21-500","Public",14.223, 32.333);
+
 			Office officeBlank = new Office(1L, 0L);
 			Office office1 = new Office(111L);
 			Office office2 = new Office(222L);
 			Office office3 = new Office(333L);
 			Office office4 = new Office(444L);
-			Patient patient1 = new Patient("Patient", "Patientski", "00u55mrhpeBbCP3aa5d7");
-			Patient patient2 = new Patient("Patient2", "Patientski2", "00u57yxtq7FMVxTUK5d7");
+			Office office5 = new Office(555L);
+
+			Patient patient1 = new Patient("Amelia", "Kaczmarczyk", "00u55mrhpeBbCP3aa5d7");
+			Patient patient2 = new Patient("Luiza", "Rutkowska", "00u57yxtq7FMVxTUK5d7");
+			Patient patient3 = new Patient("Ola", "Malinowska", "00u577FMV7FMVxTUK5d7");
+			Patient patient4 = new Patient("Irena", "Mazur", "00u5K5dq7FMVxTUK5d7");
+			Patient patient5 = new Patient("Andrea", "Górska", "00u57yMVxtq7K5dxTUK5d7");
+			Patient patient6 = new Patient("Aleksander", "Pawlak", "07K5dxMVxtq7K57K5dxUK5d7");
+			Patient patient7 = new Patient("Ryszard", "Nowak", "00u57yMVxtq7K5dxT00u57");
+			Patient patient8 = new Patient("Konstanty", "Wiśniewski", "00u57yM00u57K5d00u55d7");
+			Patient patient9 = new Patient("Roman", "Górski", "057yM00uMVxtq7K557yM00u5d7");
+			Patient patient10 = new Patient("Dorian", "Sikorski", "00xtyMVxtq7K5xtUK5d7");
+
 			Branch blankBranch = new Branch(1L, "BLANK", blankHospital);
-			Branch milHospitalBranch1 = new Branch("Cardiology", milHospital);
-			Branch milHospitalBranch2 = new Branch("Oncology", milHospital);
-			Doctor doctor1 = new Doctor("Doctor", "Doctorski", "00u55mt60r3EYoghq5d7", milHospitalBranch1, officeBlank);
-			Doctor doctor2 = new Doctor("Doctor2", "Doctorski2", "00u57yygo2wC4YwcF5d7", milHospitalBranch1, officeBlank);
-			Visit visit = new Visit(patient1, doctor1, new Date());
-			Visit visit2 = new Visit(patient2, doctor1, new Date());
-			Visit visit3 = new Visit(patient2, doctor2, new Date());
+			Branch milHospitalBranch1 = new Branch("Kardiologia", milHospital);
+			Branch milHospitalBranch2 = new Branch("Onkologia", milHospital);
+			Branch milHospitalBranch3 = new Branch("Stomatologia",hos1);
+			Branch milHospitalBranch4 = new Branch("Ginekologia", hos1);
+			Branch milHospitalBranch5 = new Branch("Logopedia",hos2);
+			Branch milHospitalBranch6 = new Branch("Ortopedia",hos2);
+			Branch milHospitalBranch7 = new Branch("Chirurgia",hos3);
+			Branch milHospitalBranch8 = new Branch("Endokrynologia",hos3);
+			Branch milHospitalBranch9 = new Branch("Radiologia",hos4);
+			Branch milHospitalBranch10 = new Branch("Psychologia",hos5);
+
+			Doctor doctor1 = new Doctor("Doctor", "Doctorski","Chirurg", "00u55mrhpeBbCP3aa5d7", milHospitalBranch7, office4);
+			Doctor doctor2 = new Doctor("Doctor2", "Doctorski2","Ortopeda", "00u57yxtq7FMVxTUK5d7", milHospitalBranch6, office1);
+			Doctor doctor3 = new Doctor("Katarzyna","Piórkowska","Ortodonta","00u577FMV7FMVxTUK5d7", milHospitalBranch3, office2);
+			Doctor doctor4 = new Doctor("Adam","Sikorski","Psychiarta","00u5K5dq7FMVxTUK5d7", milHospitalBranch10, office5);
+			Doctor doctor5 = new Doctor("Adam","Kobus","Psychiatra","00u57yMVxtq7K5dxTUK5d7" ,milHospitalBranch10, office3);
+			Doctor doctor6 = new Doctor("Magdalena","Szemryk","Ginekolog","07K5dxMVxtq7K57K5dxUK5d7", milHospitalBranch4, office2);
+			Doctor doctor7 = new Doctor("Patrycja","Robok","Kardiolog","00u57yMVxtq7K5dxT00u57", milHospitalBranch1, office4);
+			Doctor doctor8 = new Doctor("Emi","Sobczak","Logopeda","00u57yM00u57K5d00u55d7", milHospitalBranch5, office1);
+			Doctor doctor9 = new Doctor("Alex","Wróblewski","Chirurg","057yM00uMVxtq7K557yM00u5d7", milHospitalBranch7, office5);;
+			Doctor doctor10 = new Doctor("Igor","Ziółkowski","Endokrynolog","00xtyMVxtq7K5xtUK5d7", milHospitalBranch8, office5);;
+
+			Visit visit1 = new Visit(patient1, doctor1, new Date());
+			Visit visit2 = new Visit(patient2, doctor2, new Date());
+			Visit visit3 = new Visit(patient3, doctor3, new Date());
+			Visit visit4 = new Visit(patient4, doctor4, new Date());
+			Visit visit5 = new Visit(patient5, doctor5, new Date());
+			Visit visit6 = new Visit(patient6, doctor6, new Date());
+			Visit visit7 = new Visit(patient7, doctor7, new Date());
+			Visit visit8 = new Visit(patient8, doctor8, new Date());
+			Visit visit9 = new Visit(patient9, doctor9, new Date());
+			Visit visit10 = new Visit(patient10, doctor10, new Date());
+
 			hospitalService.addHospital(blankHospital);
 			hospitalService.addHospital(milHospital);
-			hospitalService.addHospital(new Hospital("Independent Public Regional Hospital", "Arkonska 4, 71-455 Szczecin", "Public", 33.441, 55.551));
-			hospitalService.addHospital(new Hospital("Rehabilitation Hospital of St. Charles Borromeo", "aleja Wyzwolenia 52, 71-899 Szczecin", "Rehab", 13.4445, 14.44));
-			hospitalService.addHospital(new Hospital("Independent Public Clinical Hospital No. 2", "al. Powstancow Wielkopolskich 72, 70-111 Szczecin", "Rehab", 10.44, 17.11));
+			hospitalService.addHospital(hos1);
+			hospitalService.addHospital(hos2);
+			hospitalService.addHospital(hos3);
+			hospitalService.addHospital(hos4);
+			hospitalService.addHospital(hos5);
+
 			officeService.addOffice(officeBlank);
 			officeService.addOffice(office1);
 			officeService.addOffice(office2);
 			officeService.addOffice(office3);
 			officeService.addOffice(office4);
+			officeService.addOffice(office5);
+
 			branchService.addBranch(blankBranch);
 			branchService.addBranch(milHospitalBranch1);
 			branchService.addBranch(milHospitalBranch2);
+			branchService.addBranch(milHospitalBranch3);
+			branchService.addBranch(milHospitalBranch4);
+			branchService.addBranch(milHospitalBranch5);
+			branchService.addBranch(milHospitalBranch6);
+			branchService.addBranch(milHospitalBranch7);
+			branchService.addBranch(milHospitalBranch8);
+			branchService.addBranch(milHospitalBranch9);
+			branchService.addBranch(milHospitalBranch10);
+
 			doctorService.addDoctor(doctor1);
 			doctorService.addDoctor(doctor2);
+			doctorService.addDoctor(doctor3);
+			doctorService.addDoctor(doctor4);
+			doctorService.addDoctor(doctor5);
+			doctorService.addDoctor(doctor6);
+			doctorService.addDoctor(doctor7);
+			doctorService.addDoctor(doctor8);
+			doctorService.addDoctor(doctor9);
+			doctorService.addDoctor(doctor10);
+
 			patientService.addPatient(patient1);
 			patientService.addPatient(patient2);
-			visitService.addVisit(visit);
+			patientService.addPatient(patient3);
+			patientService.addPatient(patient4);
+			patientService.addPatient(patient5);
+			patientService.addPatient(patient6);
+			patientService.addPatient(patient7);
+			patientService.addPatient(patient8);
+			patientService.addPatient(patient9);
+			patientService.addPatient(patient10);
+
+			visitService.addVisit(visit1);
 			visitService.addVisit(visit2);
 			visitService.addVisit(visit3);
+			visitService.addVisit(visit4);
+			visitService.addVisit(visit5);
+			visitService.addVisit(visit6);
+			visitService.addVisit(visit7);
+			visitService.addVisit(visit8);
+			visitService.addVisit(visit9);
+			visitService.addVisit(visit10);
 
 		};
 	}
