@@ -12,6 +12,7 @@ public class Doctor {
 
     String name;
     String lastName;
+    String spec;
     String oktaUID;
 
     @ManyToOne
@@ -23,9 +24,10 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(String name, String lastName, String oktaUID, Branch branch, Office office) {
+    public Doctor(String name, String lastName,  String spec, String oktaUID, Branch branch, Office office) {
         this.name = name;
         this.lastName = lastName;
+        this.spec=spec;
         this.oktaUID = oktaUID;
         this.branch = branch;
         this.office = office;
@@ -50,6 +52,10 @@ public class Doctor {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getSpec() { return spec; }
+
+    public void setSpec(String spec) { this.spec = spec; }
 
     public String getOktaUID() {
         return oktaUID;
