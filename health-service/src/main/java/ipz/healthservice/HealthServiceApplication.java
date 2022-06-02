@@ -36,11 +36,10 @@ public class HealthServiceApplication {
 		return (args) -> {
 			Hospital blankHospital = new Hospital(1L, "Centrum Onkologii Bydgoszcz im. prof. Franciszka Lukaszczyka","ul. Romanowskiej", "2", "Bydgoszcz", "85-796", "Public", 0.0, 0.0);
 			Hospital milHospital = new Hospital("109 Military Hospital SPZOZ", "Ks.Piotra Skargi", "9/11", "Szczecin", "71-422", "Military", 14.223, 32.333);
-			Hospital hos1=new Hospital("Centrum Onkologii Bydgoszcz im. prof. Franciszka Lukaszczyka","ul. Romanowskiej", "2", "Bydgoszcz", "85-796", "Public", 33.441, 55.551);
-			Hospital hos2=new Hospital("SP ZOZ Szpital Uniwersytecki w Krakowie", "ul. Kopernika", "36", "Krakow", "31-501", "Rehab", 13.4445, 14.44);
-			Hospital hos3=new Hospital("Szpitale Pomorskie Sp. z o.o. Szpital Morski im. PCK", "ul. Powstania Styczniowego", "1", "Gdynia", "81-519", "Military", 10.44, 17.11);
-			Hospital hos4=new Hospital("Wojewódzki Szpital Specjalistyczny im. Janusza Korczaka","ul. Hubalczyków","1","Słupsk","76-200", "Public",33.441, 55.551);
-			Hospital hos5=new Hospital("Wojewódzki Szpital Specjalistyczny","ul. Terebelska", "57/65","Biała Podlaska","21-500","Public",14.223, 32.333);
+			Hospital hos1=new Hospital("SP ZOZ Szpital Uniwersytecki w Krakowie", "ul. Kopernika", "36", "Krakow", "31-501", "Rehab", 13.4445, 14.44);
+			Hospital hos2=new Hospital("Szpitale Pomorskie Sp. z o.o. Szpital Morski im. PCK", "ul. Powstania Styczniowego", "1", "Gdynia", "81-519", "Military", 10.44, 17.11);
+			Hospital hos3=new Hospital("Wojewodzki Szpital Specjalistyczny im. Janusza Korczaka","ul. Hubalczykow","1","Slupsk","76-200", "Public",33.441, 55.551);
+			Hospital hos4=new Hospital("Wojewodzki Szpital Specjalistyczny","ul. Terebelska", "57/65","Biala Podlaska","21-500","Public",14.223, 32.333);
 
 			Office officeBlank = new Office(1L, 0L);
 			Office office1 = new Office(111L);
@@ -49,16 +48,16 @@ public class HealthServiceApplication {
 			Office office4 = new Office(444L);
 			Office office5 = new Office(555L);
 
-			Patient patient1 = new Patient("Amelia", "Kaczmarczyk", "00u55mrhpeBbCP3aa5d7");
-			Patient patient2 = new Patient("Luiza", "Rutkowska", "00u57yxtq7FMVxTUK5d7");
-			Patient patient3 = new Patient("Ola", "Malinowska", "00u577FMV7FMVxTUK5d7");
-			Patient patient4 = new Patient("Irena", "Mazur", "00u5K5dq7FMVxTUK5d7");
-			Patient patient5 = new Patient("Andrea", "Górska", "00u57yMVxtq7K5dxTUK5d7");
-			Patient patient6 = new Patient("Aleksander", "Pawlak", "07K5dxMVxtq7K57K5dxUK5d7");
-			Patient patient7 = new Patient("Ryszard", "Nowak", "00u57yMVxtq7K5dxT00u57");
-			Patient patient8 = new Patient("Konstanty", "Wiśniewski", "00u57yM00u57K5d00u55d7");
-			Patient patient9 = new Patient("Roman", "Górski", "057yM00uMVxtq7K557yM00u5d7");
-			Patient patient10 = new Patient("Dorian", "Sikorski", "00xtyMVxtq7K5xtUK5d7");
+			Patient patient1 = new Patient("Amelia", "Kaczmarczyk", "00u594cxk40j6OdK65d7");
+			Patient patient2 = new Patient("Luiza", "Rutkowska", "00u594egqkd66AdHz5d7");
+			Patient patient3 = new Patient("Ola", "Malinowska", "00u594ebfoMURCJsl5d7");
+			Patient patient4 = new Patient("Irena", "Mazur", "00u594gih57EXeCRg5d7");
+			Patient patient5 = new Patient("Andrea", "Gorska", "00u594ex2vmHOhziv5d7");
+			Patient patient6 = new Patient("Aleksander", "Pawlak", "00u594f3zel4Txz5W5d7");
+			Patient patient7 = new Patient("Ryszard", "Nowak", "00u594g73tbiC0Hqc5d7");
+			Patient patient8 = new Patient("Konstanty", "Wisniewski", "00u594g7wsVFe27i05d7");
+			Patient patient9 = new Patient("Roman", "Gorski", "00u594f8ncFBG5Ncr5d7");
+			Patient patient10 = new Patient("Dorian", "Sikorski", "00u594fhmeN9UYZNw5d7");
 
 			Branch blankBranch = new Branch(1L, "BLANK", blankHospital);
 			Branch milHospitalBranch1 = new Branch("Kardiologia", milHospital);
@@ -70,18 +69,18 @@ public class HealthServiceApplication {
 			Branch milHospitalBranch7 = new Branch("Chirurgia",hos3);
 			Branch milHospitalBranch8 = new Branch("Endokrynologia",hos3);
 			Branch milHospitalBranch9 = new Branch("Radiologia",hos4);
-			Branch milHospitalBranch10 = new Branch("Psychologia",hos5);
+			Branch milHospitalBranch10 = new Branch("Psychologia",hos4);
 
 			Doctor doctor1 = new Doctor("Doctor", "Doctorski","Chirurg", "00u55mrhpeBbCP3aa5d7", milHospitalBranch7, office4);
 			Doctor doctor2 = new Doctor("Doctor2", "Doctorski2","Ortopeda", "00u57yxtq7FMVxTUK5d7", milHospitalBranch6, office1);
-			Doctor doctor3 = new Doctor("Katarzyna","Piórkowska","Ortodonta","00u577FMV7FMVxTUK5d7", milHospitalBranch3, office2);
-			Doctor doctor4 = new Doctor("Adam","Sikorski","Psychiarta","00u5K5dq7FMVxTUK5d7", milHospitalBranch10, office5);
-			Doctor doctor5 = new Doctor("Adam","Kobus","Psychiatra","00u57yMVxtq7K5dxTUK5d7" ,milHospitalBranch10, office3);
-			Doctor doctor6 = new Doctor("Magdalena","Szemryk","Ginekolog","07K5dxMVxtq7K57K5dxUK5d7", milHospitalBranch4, office2);
-			Doctor doctor7 = new Doctor("Patrycja","Robok","Kardiolog","00u57yMVxtq7K5dxT00u57", milHospitalBranch1, office4);
-			Doctor doctor8 = new Doctor("Emi","Sobczak","Logopeda","00u57yM00u57K5d00u55d7", milHospitalBranch5, office1);
-			Doctor doctor9 = new Doctor("Alex","Wróblewski","Chirurg","057yM00uMVxtq7K557yM00u5d7", milHospitalBranch7, office5);;
-			Doctor doctor10 = new Doctor("Igor","Ziółkowski","Endokrynolog","00xtyMVxtq7K5xtUK5d7", milHospitalBranch8, office5);;
+			Doctor doctor3 = new Doctor("Katarzyna","Piorkowska","Ortodonta","00u594jkvl0TD13mn5d7", milHospitalBranch3, office2);
+			Doctor doctor4 = new Doctor("Adam","Sikorski","Psychiarta","00u594h68cVNUeK9g5d7",milHospitalBranch10, office2);
+			Doctor doctor5 = new Doctor("Adam","Kobus","Psychiatra","00u594j66kMVHLYy25d7" ,milHospitalBranch10, office3);
+			Doctor doctor6 = new Doctor("Magdalena","Szemryk","Ginekolog","00u594hd8nsgiT7Dq5d7", milHospitalBranch4, office2);
+			Doctor doctor7 = new Doctor("Patrycja","Robok","Kardiolog","00u594j5jeGs14NGM5d7", milHospitalBranch1, office4);
+			Doctor doctor8 = new Doctor("Emilia","Sobczak","Logopeda","00u594jkywKqQRjG75d7",milHospitalBranch5, office1);
+			Doctor doctor9 = new Doctor("Alex","Wroblewski","Chirurg","00u594haxzMaewrDZ5d7", milHospitalBranch7, office5);
+			Doctor doctor10 = new Doctor("Igor","Ziolkowski","Endokrynolog","00u594hup7n1MhckZ5d7", milHospitalBranch8, office5);
 
 			Visit visit1 = new Visit(patient1, doctor1, new Date());
 			Visit visit2 = new Visit(patient2, doctor2, new Date());
@@ -100,7 +99,6 @@ public class HealthServiceApplication {
 			hospitalService.addHospital(hos2);
 			hospitalService.addHospital(hos3);
 			hospitalService.addHospital(hos4);
-			hospitalService.addHospital(hos5);
 
 			officeService.addOffice(officeBlank);
 			officeService.addOffice(office1);
