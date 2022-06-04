@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
-
 @RestController
 public class HomeController {
     Logger logger = LoggerFactory.getLogger("Login success handler: ");
