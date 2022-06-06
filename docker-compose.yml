@@ -31,16 +31,11 @@ services:
         image: health-project/gateway-service
         ports:
             - "8080:8080"
-        environment:
-            SPRING_DATASOURCE_URL: jdbc:mysql://zutbasement.synology.me:3306/health-service?autoReconnect=true&useSSL=false
-            SPRING_DATASOURCE_USERNAME: root
-            SPRING_DATASOURCE_PASSWORD: asdf1235
         networks:
             - "microservicenetwork"
     health:
         container_name: health-service-container
         depends_on:
-            - db
             - discovery
             - gateway
         build:
