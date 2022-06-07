@@ -10,14 +10,10 @@ import ipz.gatewayservice.repositories.IPatientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.Base64;
 import java.util.HashMap;
@@ -93,79 +89,79 @@ public class HomeController {
 //        return attributes;
 //    }
 
-    @GetMapping("whoami")
-    @ResponseBody
-    public Map<String, Object> whoami(@AuthenticationPrincipal Jwt jwt) {
-        Map<String, Object> map = jwt.getClaims();
-        HashMap<String, Object> res = new HashMap<>();
-        res.put("oktauid", map.get("uid").toString());
-        res.put("sub", map.get("sub").toString());
-        res.put("Groups", map.get("Groups").toString());
+//    @GetMapping("whoami")
+//    @ResponseBody
+//    public Map<String, Object> whoami(@AuthenticationPrincipal Jwt jwt) {
+//        Map<String, Object> map = jwt.getClaims();
+//        HashMap<String, Object> res = new HashMap<>();
+//        res.put("oktauid", map.get("uid").toString());
+//        res.put("sub", map.get("sub").toString());
+//        res.put("Groups", map.get("Groups").toString());
+//
+//        if(map.get("Groups").toString().contains("Patients")) {
+//            Patient patient = iPatientRepository.findPatientByOktaUID(map.get("uid").toString());
+//            res.put("name", patient.getName());
+//            res.put("last_name", patient.getLastName());
+//            res.put("id", patient.getId().toString());
+//        }
+//        if(map.get("Groups").toString().contains("Doctors")) {
+//            Doctor doctor = iDoctorRepository.findDoctorByOktaUID(map.get("uid").toString());
+//            res.put("name", doctor.getName());
+//            res.put("last_name", doctor.getLastName());
+//            res.put("branch", doctor.getBranch().getId().toString());
+//            res.put("id", doctor.getId().toString());
+//        }
+//        return res;
+//    }
 
-        if(map.get("Groups").toString().contains("Patients")) {
-            Patient patient = iPatientRepository.findPatientByOktaUID(map.get("uid").toString());
-            res.put("name", patient.getName());
-            res.put("last_name", patient.getLastName());
-            res.put("id", patient.getId().toString());
-        }
-        if(map.get("Groups").toString().contains("Doctors")) {
-            Doctor doctor = iDoctorRepository.findDoctorByOktaUID(map.get("uid").toString());
-            res.put("name", doctor.getName());
-            res.put("last_name", doctor.getLastName());
-            res.put("branch", doctor.getBranch().getId().toString());
-            res.put("id", doctor.getId().toString());
-        }
-        return res;
-    }
-
-    @RequestMapping("")
-    @ResponseBody
-    public String oauthUserInfo(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
-                                @AuthenticationPrincipal OAuth2User oauth2User) throws JSONException {
-        String[] chunks = authorizedClient.getAccessToken().getTokenValue().split("\\.");
-        JSONObject header = new JSONObject(((decode(chunks[0]))));
-        JSONObject payload = new JSONObject(((decode(chunks[1]))));
-        var attributes = oauth2User.getAttributes();
-
-        if(payload.getString("Groups").contains("Doctors")) {
-//            logger.info((String) attributes.get("given_name"));
-//            logger.info((String) attributes.get("family_name"));
-//            logger.info((String) attributes.get("sub"));
-            Doctor doc = iDoctorRepository.findDoctorByOktaUID((String) attributes.get("sub"));
-            if(doc == null) {
-                iDoctorRepository.save(new Doctor(
-                        (String) attributes.get("given_name"),
-                        (String) attributes.get("family_name"),
-                        (String) attributes.get("sub"),
-                        iBranchRepository.findById(1L).get(),
-                        iOfficeRepository.findById(1L).get()
-                        )
-                );
-            }
-        }
-
-        if(payload.getString("Groups").contains("Patients")) {
-//            logger.info((String) attributes.get("given_name"));
-//            logger.info((String) attributes.get("family_name"));
-//            logger.info((String) attributes.get("sub"));
-            Patient patient = iPatientRepository.findPatientByOktaUID((String) attributes.get("sub"));
-            if(patient == null) {
-                iPatientRepository.save(new Patient(
-                                (String) attributes.get("given_name"),
-                                (String) attributes.get("family_name"),
-                                (String) attributes.get("sub")
-                        )
-                );
-            }
-        }
-
-        return
-                "Token: " + authorizedClient.getAccessToken().getTokenValue() + "<br/>" +
-                "User Name: " + oauth2User.getName() + "<br/>" +
-                "User Authorities: " + oauth2User.getAuthorities() + "<br/>" +
-                "Client Name: " + authorizedClient.getClientRegistration().getClientName() + "<br/>" +
-                        "Header: " + header + "<br/>" +
-                        "Payload: " + payload + "<br/>" +
-                        this.prettyPrintAttributes(oauth2User.getAttributes());
-    }
+//    @RequestMapping("")
+//    @ResponseBody
+//    public String oauthUserInfo(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,
+//                                @AuthenticationPrincipal OAuth2User oauth2User) throws JSONException {
+//        String[] chunks = authorizedClient.getAccessToken().getTokenValue().split("\\.");
+//        JSONObject header = new JSONObject(((decode(chunks[0]))));
+//        JSONObject payload = new JSONObject(((decode(chunks[1]))));
+//        var attributes = oauth2User.getAttributes();
+//
+//        if(payload.getString("Groups").contains("Doctors")) {
+////            logger.info((String) attributes.get("given_name"));
+////            logger.info((String) attributes.get("family_name"));
+////            logger.info((String) attributes.get("sub"));
+//            Doctor doc = iDoctorRepository.findDoctorByOktaUID((String) attributes.get("sub"));
+//            if(doc == null) {
+//                iDoctorRepository.save(new Doctor(
+//                        (String) attributes.get("given_name"),
+//                        (String) attributes.get("family_name"),
+//                        (String) attributes.get("sub"),
+//                        iBranchRepository.findById(1L).get(),
+//                        iOfficeRepository.findById(1L).get()
+//                        )
+//                );
+//            }
+//        }
+//
+//        if(payload.getString("Groups").contains("Patients")) {
+////            logger.info((String) attributes.get("given_name"));
+////            logger.info((String) attributes.get("family_name"));
+////            logger.info((String) attributes.get("sub"));
+//            Patient patient = iPatientRepository.findPatientByOktaUID((String) attributes.get("sub"));
+//            if(patient == null) {
+//                iPatientRepository.save(new Patient(
+//                                (String) attributes.get("given_name"),
+//                                (String) attributes.get("family_name"),
+//                                (String) attributes.get("sub")
+//                        )
+//                );
+//            }
+//        }
+//
+//        return
+//                "Token: " + authorizedClient.getAccessToken().getTokenValue() + "<br/>" +
+//                "User Name: " + oauth2User.getName() + "<br/>" +
+//                "User Authorities: " + oauth2User.getAuthorities() + "<br/>" +
+//                "Client Name: " + authorizedClient.getClientRegistration().getClientName() + "<br/>" +
+//                        "Header: " + header + "<br/>" +
+//                        "Payload: " + payload + "<br/>" +
+//                        this.prettyPrintAttributes(oauth2User.getAttributes());
+//    }
 }
