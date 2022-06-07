@@ -15,7 +15,7 @@ public class HospitalController {
     @Autowired
     private HospitalService hospitalService;
 
-    @GetMapping("getAll")
+    @GetMapping("")
     public String works() {
         return "hospital works";
     }

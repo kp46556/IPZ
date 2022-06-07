@@ -9,10 +9,6 @@ import ipz.healthservice.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,17 +39,9 @@ public class VisitController {
         return visitService.findByVisitKeyDoctorId(id);
     }
 
-//    @PostMapping("addVisitByWholeBody")
-//    public ResponseEntity addVisitByWholeBody(@RequestBody Visit visit)
-//    {
-//        visitService.addVisit(visit);
-//        return new ResponseEntity(HttpStatus.CREATED);
-//    }
-
     @PostMapping("addVisitByIds")
     public Visit addVisit(@RequestBody VisitJsonPostDataModel visitJsonPostDataModel)
     {
         return visitService.addVisitByIds(visitJsonPostDataModel.getPatientId(), visitJsonPostDataModel.getDoctorId(), visitJsonPostDataModel.getDate());
-//        return new ResponseEntity(HttpStatus.CREATED);
     }
 }

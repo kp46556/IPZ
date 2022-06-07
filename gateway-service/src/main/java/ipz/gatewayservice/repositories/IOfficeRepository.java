@@ -1,6 +1,6 @@
-package ipz.healthservice.repositories;
+package ipz.gatewayservice.repositories;
 
-import ipz.healthservice.models.Office;
+import ipz.gatewayservice.models.Office;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IOfficeRepository extends JpaRepository<Office, Long> {
